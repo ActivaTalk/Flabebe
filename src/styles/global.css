@@ -13,3 +13,6 @@
     --color-secondary: #022733;
   }
   
+  body {
+    font-family: 'Roboto Variable', sans-serif;
+  }

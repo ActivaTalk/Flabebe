@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@images/logo.png";
+import Menu from "@icons/menu.png";
+---
+
+<nav class="nav">
+    <div class="nav__container">
+            <Image src={Logo} alt="Logo" class="nav__logo" />
+            <button class="nav__menu">
+                <Image src={Menu} alt="Menu" class="nav__menu-icon" />
+            </button>
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="/" class="nav__link">Inicio</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/" class="nav__link">Forex</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/" class="nav__link">Productos</a>
+                </li>
+                <li class="nav__item">
+                    <a href="/" class="nav__link">Contacto</a>
+                </li>
+                <li class="nav__item">
+                    <button class="nav__button">
+                        Iniciar sesión
+                    </button>
+                </li>
+            </ul>
+    </div>
+</nav>
+
+<style lang="scss">
+    @reference "@globalCSS";
+
+    .nav {
+        @apply p-5;
+
+        &__container {
+            @apply flex justify-between items-center;
+        }
+        &__logo {
+            @apply w-10;
+        }
+        &__menu{
+            @apply block md:hidden;
+        }
+
+        &__menu-icon {
+            @apply w-10 h-10;
+        }
+
+        &__list {
+            @apply hidden md:flex items-center gap-5 list-none;
+        }
+
+        &__item {
+            @apply uppercase text-primary text-[14px];
+        }
+        
+    }
+</style>
