@@ -7,6 +7,9 @@ import {
   useTranslations,
 } from "@/lib/i18n/utils";
 
+import X from "@/assets/icons/shared/x.astro";
+import YouTube from "@/assets/icons/shared/youtube.astro";
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
@@ -47,11 +50,18 @@ const links = [
           ))
         }
       </div>
-      <div class="footer__links--social">social media</div>
+      <div class="footer__links--social">
+        <X />
+        <YouTube />
+      </div>
     </div>
-    <div class="footer__social">
-      <div>X</div>
-      <div>Y</div>
+    <div class="footer__terms">
+      <span class="text-sm text-gray-300">
+        {t("footer.copyright")}
+      </span>
+      <p>
+        {t("footer.copyright")}
+      </p>
     </div>
   </section>
 </footer>
@@ -60,7 +70,7 @@ const links = [
   @import "@/styles/global.css";
 
   .footer {
-    @apply bg-primary text-white p-4;
+    @apply bg-primary text-white py-9 px-4;
   }
 
   .footer__container {
@@ -68,7 +78,7 @@ const links = [
   }
 
   .footer__links {
-    @apply flex flex-col md:flex-row items-center justify-between gap-4;
+    @apply flex flex-col md:flex-row items-center justify-between gap-6;
   }
 
   .footer__links--logo {
@@ -80,6 +90,6 @@ const links = [
   }
 
   .footer__links--social {
-    @apply flex gap-4;
+    @apply flex items-center gap-4;
   }
 </style>
