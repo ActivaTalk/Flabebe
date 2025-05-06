@@ -1,0 +1,85 @@
+---
+import { LinksEn, LinksES } from "@/utils/links";
+
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@/lib/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const isSpanish = lang === "es";
+
+const links = [
+  {
+    href: translatePath(isSpanish ? LinksES.HOME : LinksEn.HOME),
+    label: t("header.home"),
+  },
+  { href: translatePath(LinksEn.FOREX), label: t("header.forex") },
+  {
+    href: translatePath(isSpanish ? LinksES.PRODUCTS : LinksEn.PRODUCTS),
+    label: t("header.products"),
+  },
+  {
+    href: translatePath(isSpanish ? LinksES.CONTACT : LinksEn.CONTACT),
+    label: t("header.contact"),
+  },
+  {
+    href: translatePath(isSpanish ? LinksES.LEGALS : LinksEn.LEGALS),
+    label: t("header.legals"),
+  },
+];
+---
+
+<footer class="footer">
+  <section class="footer__container">
+    <div class="footer__links">
+      <a href="/about" class="text-white hover:text-gray-300">logo</a>
+      <div class="footer__links--menu">
+        {
+          links?.map((link) => (
+            <a href={link.href} class="text-white hover:text-gray-300">
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+      <div class="footer__links--social">social media</div>
+    </div>
+    <div class="footer__social">
+      <div>X</div>
+      <div>Y</div>
+    </div>
+  </section>
+</footer>
+
+<style>
+  @import "@/styles/global.css";
+
+  .footer {
+    @apply bg-primary text-white p-4;
+  }
+
+  .footer__container {
+    @apply max-w-screen-2xl mx-auto w-full;
+  }
+
+  .footer__links {
+    @apply flex flex-col md:flex-row items-center justify-between gap-4;
+  }
+
+  .footer__links--logo {
+    @apply flex gap-4;
+  }
+
+  .footer__links--menu {
+    @apply grow flex items-center justify-center gap-4 md:gap-8 text-sm font-bold;
+  }
+
+  .footer__links--social {
+    @apply flex gap-4;
+  }
+</style>

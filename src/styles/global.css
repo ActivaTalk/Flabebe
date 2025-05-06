@@ -1,15 +1,10 @@
 @import "tailwindcss";
 
-@font-face {
-    font-family: 'Helvetica';
-    src: url('../../public/fonts/helvetica-compressed.otf') format('otf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @theme {
-    --color-primary: #181818;
-    --color-secondary: #022733;
-  }
-  
+@theme {
+  --color-text: #181818;
+  --color-primary: #022733;
+  --color-secondary: #011b24;
+  --color-accent: #000814;
+  --color-muted: #8bbeb2;
+  --color-background: #edddd4;
+}
